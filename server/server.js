@@ -19,6 +19,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Normalize duplicate slashes in URLs (e.g. //api/books -> /api/books)
+app.use((req, res, next) => {
+  req.url = req.url.replace(/\/{2,}/g, '/');
+  next();
+});
+
 // Serve uploaded PDF files statically under /uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

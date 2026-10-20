@@ -1,7 +1,8 @@
 // client/src/api.js
 // Centralized API utility for interacting with the Pooja Vaypu Express backend
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+// Strip any trailing slashes from API_BASE so //api/books 404 errors never happen
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/+$/, '');
 
 /**
  * Get the full URL to view an uploaded PDF
