@@ -1,0 +1,1709 @@
+/* client/src/index.css */
+/* Pooja Vaypu - Traditional Kerala Festival Aesthetic */
+
+:root {
+  --bg-cream: #FAF6EE;
+  --bg-card: #FFFFFF;
+  --bg-parchment: #F4EAD4;
+  --text-primary: #2C1810;
+  --text-muted: #6B4E3D;
+  --maroon: #7A0C16;
+  --maroon-dark: #58060E;
+  --maroon-light: #9B1824;
+  --gold: #C8963E;
+  --gold-light: #F4D38A;
+  --gold-dark: #966C22;
+  --gold-glow: rgba(200, 150, 62, 0.4);
+  --wood-top: #5C3217;
+  --wood-mid: #42210B;
+  --wood-dark: #2A1305;
+  --font-heading: 'Marcellus', 'Cinzel', serif;
+  --font-malayalam: 'Noto Sans Malayalam', sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-cream);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(244, 211, 138, 0.25) 0%, transparent 60%),
+    radial-gradient(circle at 10% 30%, rgba(122, 12, 22, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 70%, rgba(200, 150, 62, 0.05) 0%, transparent 40%);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Malayalam text specific styling */
+.malayalam-text {
+  font-family: var(--font-malayalam);
+}
+
+/* Layout container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem 1rem;
+}
+
+/* Header & Navigation */
+.navbar {
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  border-bottom: 3px solid var(--gold);
+  box-shadow: 0 4px 20px rgba(88, 6, 14, 0.25), 0 0 15px var(--gold-glow);
+  padding: 0.8rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--gold-light);
+}
+
+.brand-icon {
+  font-size: 1.8rem;
+  filter: drop-shadow(0 0 6px rgba(244, 211, 138, 0.8));
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #FFF6E5;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.brand-subtitle {
+  font-family: var(--font-malayalam);
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  opacity: 0.9;
+  letter-spacing: 0.03em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+  color: #F8E6C8;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.nav-link:hover {
+  background: rgba(244, 211, 138, 0.15);
+  border-color: rgba(200, 150, 62, 0.5);
+  color: #FFFFFF;
+}
+
+.nav-link.active {
+  background: linear-gradient(180deg, #A82431 0%, #7A0C16 100%);
+  color: #FFFDF8;
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 10px rgba(200, 150, 62, 0.4);
+}
+
+/* Page Headers */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--maroon);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
+  text-shadow: 0 1px 2px rgba(122, 12, 22, 0.15);
+}
+
+.page-description {
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Upload Card */
+.upload-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(200, 150, 62, 0.35);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 18px rgba(92, 50, 23, 0.06), 0 0 12px rgba(244, 211, 138, 0.2);
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--maroon), var(--gold), var(--maroon));
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.upload-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.upload-title-row h3 {
+  font-family: var(--font-heading);
+  color: var(--maroon);
+  font-size: 1.25rem;
+}
+
+.form-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .form-inputs {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input-field {
+  padding: 0.75rem 1rem;
+  border: 1px solid #D9CBB8;
+  border-radius: 8px;
+  background-color: var(--bg-cream);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(200, 150, 62, 0.2);
+}
+
+.file-input-wrapper {
+  position: relative;
+}
+
+.file-input-styled {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  border: 1.5px dashed var(--gold);
+  border-radius: 8px;
+  background-color: #FFFDF9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.file-input-styled:hover {
+  background-color: #FFF9ED;
+  border-color: var(--gold-dark);
+}
+
+.file-input-hidden {
+  display: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  color: #FFFDF8;
+  border: 1px solid var(--gold);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(122, 12, 22, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--maroon-light) 0%, var(--maroon) 100%);
+  box-shadow: 0 4px 14px rgba(122, 12, 22, 0.35), 0 0 10px var(--gold-glow);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Bookshelf Visual Representation */
+.bookshelf-section {
+  margin-top: 1.5rem;
+}
+
+.shelf-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.25rem;
+}
+
+.shelf-count {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.shelf-count strong {
+  color: var(--maroon);
+}
+
+.bookshelf-unit {
+  position: relative;
+  background: linear-gradient(180deg, #F3E7D3 0%, #E9D5BA 100%);
+  border: 2px solid #C4A57B;
+  border-radius: 12px 12px 6px 6px;
+  box-shadow: 
+    inset 0 10px 25px rgba(66, 33, 11, 0.15),
+    0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem 1.5rem 0 1.5rem;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+/* Inner wall shadow of bookshelf */
+.bookshelf-unit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 25px;
+  background: linear-gradient(180deg, rgba(42, 19, 5, 0.18) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.spines-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.85rem;
+  overflow-x: auto;
+  padding-bottom: 0;
+  min-height: 310px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+
+.spines-row::-webkit-scrollbar {
+  height: 6px;
+}
+.spines-row::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 3px;
+}
+
+/* The actual physical wood plank of the shelf */
+.wood-shelf-plank {
+  height: 22px;
+  background: linear-gradient(180deg, #6E3C1B 0%, #4E2810 70%, #3B1C0A 100%);
+  border-top: 2px solid #945729;
+  border-bottom: 2px solid #241004;
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15);
+  margin: 0 -1.5rem;
+  position: relative;
+}
+
+.wood-shelf-edge {
+  height: 12px;
+  background: linear-gradient(180deg, #3A1B07 0%, #200E03 100%);
+  margin: 0 -1.5rem;
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Individual Book Item on the Shelf */
+.book-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.book-slot:hover {
+  transform: translateY(-6px);
+  z-index: 10;
+}
+
+/* Book Spine - Vertical */
+.book-spine {
+  width: 48px;
+  height: 250px;
+  border-radius: 4px 4px 1px 1px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0.25rem;
+  box-shadow: 
+    -2px 0 6px rgba(0, 0, 0, 0.3),
+    inset 2px 0 4px rgba(255, 255, 255, 0.2),
+    inset -2px 0 4px rgba(0, 0, 0, 0.35);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: 1px solid rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.book-spine:hover {
+  box-shadow: 
+    0 0 16px var(--gold-glow),
+    -3px 0 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Placed book badge / indicator */
+.spine-placed-glow {
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.7), -2px 0 6px rgba(0,0,0,0.3) !important;
+}
+
+.placed-lamp-badge {
+  font-size: 1.1rem;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.9));
+  animation: lampPulse 2s infinite alternate ease-in-out;
+}
+
+@keyframes lampPulse {
+  from { filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.7)); }
+  to { filter: drop-shadow(0 0 8px rgba(255, 215, 0, 1)); }
+}
+
+/* Spine embossed gold foils */
+.spine-gold-band {
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, #B8860B 0%, #FFD700 50%, #B8860B 100%);
+  border-radius: 1px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.spine-title-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+  overflow: hidden;
+  max-height: 180px;
+}
+
+.spine-title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #FFF6E5;
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 165px;
+}
+
+/* Spine color palettes */
+.spine-saffron { background: linear-gradient(90deg, #7A2E05 0%, #A8470E 40%, #7A2E05 100%); }
+.spine-maroon  { background: linear-gradient(90deg, #4A050B 0%, #7A0C16 40%, #4A050B 100%); }
+.spine-gold    { background: linear-gradient(90deg, #6E5014 0%, #9B7322 40%, #6E5014 100%); }
+.spine-green   { background: linear-gradient(90deg, #103820 0%, #1D5432 40%, #103820 100%); }
+.spine-blue    { background: linear-gradient(90deg, #0C3144 0%, #164C68 40%, #0C3144 100%); }
+.spine-plum    { background: linear-gradient(90deg, #3C102E 0%, #5C1D48 40%, #3C102E 100%); }
+.spine-terracotta { background: linear-gradient(90deg, #5C2619 0%, #8A3E2B 40%, #5C2619 100%); }
+
+/* Controls beneath each book on the shelf */
+.book-actions-overlay {
+  margin-top: 0.6rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: center;
+  width: 100%;
+}
+
+.btn-place-toggle {
+  background: #FFFDF8;
+  border: 1px solid var(--gold);
+  color: var(--maroon);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.btn-place-toggle:hover {
+  background: var(--maroon);
+  color: #FFFFFF;
+  border-color: var(--maroon);
+}
+
+.btn-place-toggle.is-placed {
+  background: linear-gradient(135deg, #A8470E 0%, #7A2E05 100%);
+  color: #FFFDF8;
+  border-color: #E08534;
+}
+
+.btn-place-toggle.is-placed:hover {
+  background: #5E2003;
+}
+
+.btn-delete-book {
+  background: transparent;
+  border: none;
+  color: #8C4348;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.btn-delete-book:hover {
+  background: rgba(122, 12, 22, 0.1);
+  color: var(--maroon);
+}
+
+/* Empty shelf state */
+.empty-shelf-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+}
+
+.empty-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--maroon);
+  margin-bottom: 0.4rem;
+}
+
+/* Locked book style on shelf */
+.btn-place-toggle.is-locked {
+  background: #E5E0D8;
+  color: #7A7267;
+  border-color: #C5BCB0;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   PHASE 2 & 3: Sacred Saraswati Altar, Nilavilakku Lamps & Divine Glow
+   ========================================================================== */
+
+.altar-view-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1rem 3rem 1rem;
+  transition: all 0.6s ease;
+  position: relative;
+}
+
+/* Background Altar Glow Levels based on how many lamps are lit */
+.altar-view-wrapper.glow-level-0 {
+  filter: drop-shadow(0 0 0 transparent);
+}
+
+.altar-view-wrapper.glow-level-1 {
+  background: radial-gradient(circle at 50% 35%, rgba(255, 200, 100, 0.15) 0%, transparent 70%);
+}
+
+.altar-view-wrapper.glow-level-2 {
+  background: 
+    radial-gradient(circle at 50% 30%, rgba(255, 220, 120, 0.28) 0%, transparent 65%),
+    radial-gradient(circle at 20% 45%, rgba(255, 170, 50, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 45%, rgba(255, 170, 50, 0.15) 0%, transparent 50%);
+}
+
+.altar-top-banner {
+  margin-bottom: 2rem;
+}
+
+/* Altar Assembly: Left Lamp | Central Shrine | Right Lamp */
+.altar-sacred-setting {
+  display: grid;
+  grid-template-columns: 160px 1fr 160px;
+  gap: 1.5rem;
+  align-items: end;
+  justify-items: center;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem 0.5rem;
+  position: relative;
+}
+
+@media (max-width: 860px) {
+  .altar-sacred-setting {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .altar-side-lamp {
+    order: 2;
+  }
+  .altar-center-shrine {
+    order: 1;
+  }
+}
+
+/* Nilavilakku (Kerala Lamp) Styling */
+.nilavilakku-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease;
+  user-select: none;
+}
+
+.nilavilakku-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.nilavilakku-svg {
+  width: 140px;
+  height: 320px;
+  filter: drop-shadow(0 6px 14px rgba(42, 19, 5, 0.25));
+}
+
+.lamp-halo-glow {
+  position: absolute;
+  top: 15px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.5) 0%, rgba(255, 140, 0, 0.25) 45%, transparent 70%);
+  pointer-events: none;
+  animation: haloPulse 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes haloPulse {
+  0% { transform: scale(0.92); opacity: 0.75; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Flickering Flame Animation */
+.lamp-flame-group {
+  transform-origin: 60px 52px;
+  animation: flameFlicker 1.8s infinite ease-in-out;
+}
+
+@keyframes flameFlicker {
+  0%   { transform: scale(1) skewX(0deg); opacity: 0.95; }
+  25%  { transform: scale(1.05, 0.97) skewX(-1.5deg); opacity: 1; }
+  50%  { transform: scale(0.96, 1.04) skewX(1deg); opacity: 0.92; }
+  75%  { transform: scale(1.03, 0.98) skewX(-0.8deg); opacity: 0.98; }
+  100% { transform: scale(1) skewX(0deg); opacity: 0.95; }
+}
+
+.flame-inner {
+  animation: flameCore 1s infinite alternate ease-in-out;
+}
+
+@keyframes flameCore {
+  0% { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+.lamp-hint-label {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  font-family: var(--font-heading);
+  color: var(--gold-dark);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  border: 1px solid rgba(200, 150, 62, 0.3);
+}
+
+/* Central Shrine & Framed Saraswati Devi Portrait */
+.altar-center-shrine {
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.devi-frame-container {
+  position: relative;
+  width: 320px;
+  margin-bottom: -15px;
+  z-index: 5;
+}
+
+@media (max-width: 480px) {
+  .devi-frame-container {
+    width: 270px;
+  }
+}
+
+/* Garland Vector styling */
+.garland-container {
+  position: absolute;
+  top: -24px;
+  left: -20px;
+  right: -20px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.garland-svg-top {
+  width: 100%;
+  height: 60px;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.25));
+}
+
+/* Chandanam & Kumkum Tilak Mark */
+.sacred-tilak-mark {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.tilak-sandal {
+  width: 26px;
+  height: 6px;
+  background: #E8B949;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2px;
+}
+
+.tilak-kumkum {
+  width: 7px;
+  height: 7px;
+  background: #B3101E;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Incense Holder & Rising Smoke Wisps */
+.incense-burner-shrine {
+  position: absolute;
+  bottom: 10px;
+  right: -25px;
+  z-index: 12;
+  pointer-events: none;
+}
+
+.agarbatti-stick {
+  width: 3px;
+  height: 38px;
+  background: linear-gradient(180deg, #FF4500 0%, #4A2207 20%, #2A1305 100%);
+  transform: rotate(20deg);
+  border-radius: 2px;
+  box-shadow: 0 0 5px #FF6600;
+}
+
+.smoke-wisp {
+  position: absolute;
+  top: -15px;
+  left: -8px;
+  width: 20px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.5) 0%, rgba(240, 240, 240, 0.2) 50%, transparent 80%);
+  filter: blur(4px);
+  animation: smokeRise 3s infinite linear;
+}
+
+.smoke-1 { animation-delay: 0s; }
+.smoke-2 { animation-delay: 1s; left: -14px; }
+.smoke-3 { animation-delay: 2s; left: -2px; }
+
+@keyframes smokeRise {
+  0% {
+    transform: translateY(0) scale(0.6) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.1) rotate(15deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-70px) scale(1.6) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+/* Framed Portrait box */
+.devi-golden-frame {
+  background: #4B090F;
+  border: 10px solid #C8963E;
+  border-image: linear-gradient(135deg, #FFD700 0%, #B8860B 40%, #FFEAA7 70%, #996515 100%) 10;
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.45),
+    inset 0 0 15px rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  overflow: hidden;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.devi-portrait-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Elegant Placeholder when saraswati.jpg is not yet added */
+.saraswati-placeholder-box {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #7A0C16 0%, #42060B 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+  color: #FFF3DA;
+}
+
+.placeholder-deity-icon {
+  font-size: 3.5rem;
+  margin-bottom: 0.4rem;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+}
+
+.placeholder-deity-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: #FFD700;
+  margin-bottom: 0.5rem;
+}
+
+.placeholder-instruction {
+  font-size: 0.85rem;
+  color: #E2D3BE;
+  line-height: 1.5;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px dashed rgba(200, 150, 62, 0.5);
+  margin-bottom: 0.75rem;
+}
+
+.placeholder-instruction code {
+  color: #FFE5A3;
+}
+
+.placeholder-sub {
+  font-family: var(--font-malayalam);
+  font-size: 0.8rem;
+  color: #F3CA68;
+  opacity: 0.9;
+}
+
+/* Low Wooden Table / Platform (Peedam) */
+.wooden-peedam-table {
+  width: 100%;
+  position: relative;
+  z-index: 6;
+}
+
+.peedam-top-surface {
+  background: linear-gradient(180deg, #5C2D11 0%, #411E0A 100%);
+  border-top: 3px solid #8B4D20;
+  border-radius: 8px 8px 0 0;
+  padding: 1.5rem 1rem 1rem 1rem;
+  min-height: 160px;
+  box-shadow: 
+    inset 0 4px 8px rgba(0, 0, 0, 0.4),
+    0 -4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.peedam-front-plank {
+  height: 24px;
+  background: linear-gradient(180deg, #381907 0%, #200D03 100%);
+  border-top: 1px solid #5C2D11;
+  border-bottom: 2px solid #140702;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.peedam-carving-motif {
+  color: #9A6626;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  opacity: 0.7;
+}
+
+.peedam-feet {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.brass-foot {
+  width: 22px;
+  height: 12px;
+  background: linear-gradient(180deg, #C9972C 0%, #6E490E 100%);
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Placed Books on the Altar Peedam */
+.altar-empty-state {
+  text-align: center;
+  padding: 1rem;
+}
+
+.empty-altar-text {
+  color: #F8E4C7;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.9;
+}
+
+.btn-go-shelf {
+  display: inline-block;
+  background: linear-gradient(135deg, #C8963E 0%, #966C22 100%);
+  color: #230E05;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-go-shelf:hover {
+  background: #E5B254;
+  transform: translateY(-1px);
+}
+
+.placed-books-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.altar-book-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+  width: 80px;
+}
+
+.altar-book-item:hover {
+  transform: translateY(-5px);
+}
+
+.altar-book-cover {
+  width: 70px;
+  height: 95px;
+  background: linear-gradient(135deg, #7A0C16 0%, #4D050B 100%);
+  border: 1px solid #C8963E;
+  border-radius: 3px 6px 6px 3px;
+  box-shadow: 
+    -3px 0 6px rgba(0,0,0,0.4),
+    3px 4px 10px rgba(0,0,0,0.4);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  text-align: center;
+}
+
+.book-cover-ribbon {
+  position: absolute;
+  top: 0;
+  left: 8px;
+  width: 5px;
+  height: 25px;
+  background: #FFD700;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.altar-lock-indicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 0.8rem;
+  filter: drop-shadow(0 0 3px #000);
+}
+
+.altar-sanctified-star {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  font-size: 0.75rem;
+  color: #FFD700;
+}
+
+.book-cover-title {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #FFF5E0;
+  line-height: 1.2;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.book-cover-caption {
+  font-size: 0.7rem;
+  color: #F8E6C8;
+  margin-top: 0.35rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+}
+
+/* ==========================================================================
+   PHASE 4: Offerings & Audio Player
+   ========================================================================== */
+
+.altar-offerings-section {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.offerings-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.offerings-tray {
+  background: #FFFFFF;
+  border: 1px solid rgba(200, 150, 62, 0.4);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 6px 20px rgba(92, 50, 23, 0.06);
+}
+
+.tray-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--maroon);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tray-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.85rem;
+}
+
+.offering-btn {
+  background: #FFFDF9;
+  border: 1.5px solid #E2D3BD;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.offering-btn:hover {
+  background: #FFF8EB;
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(200, 150, 62, 0.2);
+}
+
+.offering-btn.active {
+  background: linear-gradient(135deg, #FFF9ED 0%, #F5E8CB 100%);
+  border-color: var(--gold-dark);
+  box-shadow: 0 0 10px var(--gold-glow);
+}
+
+.offering-icon {
+  font-size: 1.5rem;
+}
+
+.offering-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Bell Shake Animation */
+.bell-shake {
+  animation: ringBell 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes ringBell {
+  0% { transform: rotate(0); }
+  15% { transform: rotate(18deg); }
+  30% { transform: rotate(-18deg); }
+  45% { transform: rotate(14deg); }
+  60% { transform: rotate(-14deg); }
+  75% { transform: rotate(8deg); }
+  90% { transform: rotate(-8deg); }
+  100% { transform: rotate(0); }
+}
+
+.audio-missing-note {
+  font-size: 0.8rem;
+  color: #8C521F;
+  margin-top: 0.75rem;
+  padding: 0.35rem 0.6rem;
+  background: #FFF7ED;
+  border-radius: 6px;
+  border-left: 3px solid var(--gold);
+}
+
+/* Chanting Player Card */
+.chant-player-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(200, 150, 62, 0.4);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 6px 20px rgba(92, 50, 23, 0.06);
+}
+
+.player-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.player-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.audio-note-icon {
+  font-size: 1.8rem;
+  color: var(--maroon);
+}
+
+.player-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.chant-toggle-btn {
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  color: #FFFDF8;
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 0.6rem 1.25rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(122, 12, 22, 0.25);
+}
+
+.chant-toggle-btn.playing {
+  background: linear-gradient(135deg, #996515 0%, #6E490E 100%);
+  box-shadow: 0 0 12px var(--gold-glow);
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.volume-slider {
+  accent-color: var(--maroon);
+  cursor: pointer;
+  width: 90px;
+}
+
+.chant-lyrics-box {
+  background: #FAF6EE;
+  border: 1px dashed #D9C9B4;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.lyrics-malayalam {
+  font-family: var(--font-malayalam);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--maroon);
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+.lyrics-sanskrit {
+  font-family: serif;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.lyrics-trans {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Falling Flowers Overlay */
+.petals-canvas-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.falling-petal {
+  position: absolute;
+  top: -30px;
+  border-radius: 50% 0 50% 50%;
+  animation: petalDrop 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.petal-jasmine {
+  background: radial-gradient(circle, #FFFFFF 0%, #F5F5E0 80%, #DFDFC0 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.petal-marigold-orange {
+  background: radial-gradient(circle, #FF4500 0%, #FF8C00 70%, #CC3700 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.petal-marigold-yellow {
+  background: radial-gradient(circle, #FFD700 0%, #FFA500 70%, #B8860B 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes petalDrop {
+  0% {
+    top: -20px;
+    opacity: 0;
+    transform: translateX(0) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(35px) rotate(180deg);
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    top: 90vh;
+    opacity: 0;
+    transform: translateX(-25px) rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   PHASE 5: Countdown Banner & Festival Lock
+   ========================================================================== */
+
+.countdown-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.demo-mode-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: #FFFDF8;
+  border: 1px solid #E2D3BE;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.demo-badge {
+  font-weight: 700;
+  color: var(--maroon);
+}
+
+.demo-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.demo-btn {
+  background: #F4EAD4;
+  border: 1px solid #C8963E;
+  color: var(--text-primary);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.demo-btn.active {
+  background: var(--maroon);
+  color: #FFFFFF;
+  border-color: var(--maroon);
+  box-shadow: 0 0 8px rgba(122, 12, 22, 0.3);
+}
+
+.countdown-banner {
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  border: 1.5px solid;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.countdown-banner.status-before {
+  background: #FFFBEB;
+  border-color: #F59E0B;
+  color: #92400E;
+}
+
+.countdown-banner.status-between {
+  background: linear-gradient(135deg, #7A0C16 0%, #4D050B 100%);
+  border-color: var(--gold);
+  color: #FFF6E5;
+  box-shadow: 0 4px 20px rgba(122, 12, 22, 0.3);
+}
+
+.countdown-banner.status-after {
+  background: #F0FDF4;
+  border-color: #22C55E;
+  color: #14532D;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.banner-content.live-timer {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.banner-content.eduppu-celebration {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.banner-icon {
+  font-size: 2rem;
+}
+
+.timer-boxes {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.timer-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 0.4rem 0.65rem;
+  min-width: 52px;
+  text-align: center;
+}
+
+.timer-val {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #FFD700;
+  line-height: 1.1;
+}
+
+.timer-lbl {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #E2D3BE;
+  letter-spacing: 0.05em;
+}
+
+.btn-eduppu-action {
+  background: linear-gradient(135deg, #15803D 0%, #166534 100%);
+  color: #FFFFFF;
+  border: 1px solid #86EFAC;
+  padding: 0.7rem 1.25rem;
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(21, 128, 61, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-eduppu-action:hover {
+  background: #16A34A;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   PHASE 6: Vidyarambham Rice Tray (Ari Thalam)
+   ========================================================================== */
+
+.vidyarambham-page {
+  max-width: 850px;
+}
+
+.mantra-guide-banner {
+  background: #FFFFFF;
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(200, 150, 62, 0.15);
+  margin-bottom: 2rem;
+}
+
+.mantra-badge {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--maroon);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.sacred-mantra-text {
+  font-size: 2.2rem;
+  color: var(--maroon);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.35rem;
+  text-shadow: 0 1px 2px rgba(122, 12, 22, 0.2);
+}
+
+@media (max-width: 600px) {
+  .sacred-mantra-text {
+    font-size: 1.5rem;
+  }
+}
+
+.mantra-meaning {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* The Traditional Brass Uruli Tray Container */
+.tray-display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.brass-uruli-rim {
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, #B8860B 0%, #FFD700 30%, #996515 70%, #DAA520 100%);
+  border: 14px solid #734F12;
+  border-radius: 28px;
+  box-shadow: 
+    0 16px 36px rgba(42, 19, 5, 0.3),
+    inset 0 0 18px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(200, 150, 62, 0.35);
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .brass-uruli-rim {
+    aspect-ratio: 4 / 3;
+    padding: 10px;
+    border-width: 8px;
+  }
+}
+
+.rice-canvas-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 6px 14px rgba(75, 45, 10, 0.35);
+}
+
+.rice-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: crosshair;
+  touch-action: none; /* Prevents phone page scrolling while writing */
+}
+
+/* Sweeping Animation */
+.rice-sweep-effect {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.6) 45%, rgba(255, 255, 255, 0.8) 50%, rgba(212, 175, 55, 0.6) 55%, transparent 100%);
+  animation: sweepRice 0.45s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes sweepRice {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.touch-guide-overlay {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(44, 24, 16, 0.7);
+  color: #FFFDF8;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  pointer-events: none;
+  font-family: var(--font-heading);
+}
+
+.tray-action-bar {
+  margin-top: 1.25rem;
+}
+
+.btn-smooth-tray {
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  color: #FFFDF8;
+  border: 1.5px solid var(--gold);
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(122, 12, 22, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-smooth-tray:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--maroon-light) 0%, var(--maroon) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(122, 12, 22, 0.35);
+}
+
+.btn-smooth-tray:disabled {
+  opacity: 0.6;
+}
+
+.vidyarambham-info-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(200, 150, 62, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.vidyarambham-info-card h3 {
+  font-family: var(--font-heading);
+  color: var(--maroon);
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   PHASE 7: Polish & Footer
+   ========================================================================== */
+
+.app-footer {
+  margin-top: auto;
+  background: linear-gradient(135deg, #3A050A 0%, #200205 100%);
+  border-top: 2px solid var(--gold);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: #F8E6C8;
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-main {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+  color: #FFFDF8;
+}
+
+.footer-sub {
+  font-size: 0.8rem;
+  color: var(--gold-light);
+  opacity: 0.85;
+}
+
+
+/* Notifications / Status feedback */
+.toast-msg {
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toast-msg.error {
+  background: #FDF2F2;
+  color: #991B1B;
+  border: 1px solid #F87171;
+}
+
+.toast-msg.success {
+  background: #F0FDF4;
+  color: #166534;
+  border: 1px solid #86EFAC;
+}

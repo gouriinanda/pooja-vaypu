@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment variables
+.env
+.env.local
+server/.env
+
+# Build outputs
+dist/
+dist-ssr/
+*.local
+
+# Server uploaded PDFs (keep folder, ignore user uploaded files)
+server/uploads/*
+!server/uploads/.gitkeep
+
+# System & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
