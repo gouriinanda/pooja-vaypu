@@ -33,14 +33,21 @@ export const uploadBook = async (file, title) => {
     formData.append('title', title.trim());
   }
 
-  const response = await fetch(`${API_BASE}/api/books`, {
-    method: 'POST',
-    body: formData,
-  });
+  let response;
+  try {
+    response = await fetch(`${API_BASE}/api/books`, {
+      method: 'POST',
+      body: formData,
+    });
+  } catch (netErr) {
+    throw new Error(
+      `Cannot connect to backend (${API_BASE || 'local'}). If using Render free tier, it may be waking up—please try again in 30 seconds.`
+    );
+  }
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.error || 'Failed to upload book');
+    throw new Error(errorData.error || `Upload failed (Status ${response.status})`);
   }
 
   return response.json();
