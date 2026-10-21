@@ -20,6 +20,12 @@ const bookSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  // The unique owner / devotee ID (isolates each user's personal shelf)
+  userId: {
+    type: String,
+    required: true,
+    index: true,
+  },
   // When the book was uploaded to the shelf
   createdAt: {
     type: Date,

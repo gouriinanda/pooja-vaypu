@@ -304,8 +304,44 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   margin-bottom: 1rem;
   padding: 0.5rem 0.25rem;
+}
+
+.personal-shelf-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.personal-shelf-tag {
+  background: #FFF8EB;
+  border: 1px solid var(--gold);
+  color: var(--maroon);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.btn-sync-shelf {
+  background: transparent;
+  border: 1px dashed var(--gold-dark);
+  color: var(--gold-dark);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-sync-shelf:hover {
+  background: var(--maroon);
+  color: #FFFDF8;
+  border-color: var(--maroon);
 }
 
 .shelf-count {

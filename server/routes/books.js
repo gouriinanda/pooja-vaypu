@@ -47,11 +47,19 @@ const upload = multer({
 
 /**
  * @route   GET /api/books
- * @desc    Get all books on the shelf/altar
+ * @desc    Get books belonging only to the requesting user's private shelf
  */
 router.get('/', async (req, res) => {
   try {
-    const books = await Book.find().sort({ createdAt: -1 });
+    const userId = req.headers['x-user-id'] || req.query.userId;
+    if (!userId) {
+      return res.json([]);
+    }
+
+    // Seamlessly associate any legacy books that didn't have a userId yet to this user
+    await Book.updateMany({ userId: { $exists: false } }, { userId });
+
+    const books = await Book.find({ userId }).sort({ createdAt: -1 });
     res.json(books);
   } catch (error) {
     console.error('Error fetching books:', error);
@@ -61,10 +69,15 @@ router.get('/', async (req, res) => {
 
 /**
  * @route   POST /api/books
- * @desc    Upload a PDF book to the shelf
+ * @desc    Upload a PDF book to the user's private shelf
  */
 router.post('/', upload.single('book'), async (req, res) => {
   try {
+    const userId = req.headers['x-user-id'] || req.body.userId;
+    if (!userId) {
+      return res.status(400).json({ error: 'User identifier is required to save books to your personal shelf' });
+    }
+
     if (!req.file) {
       return res.status(400).json({ error: 'Please select a PDF file to upload' });
     }
@@ -80,6 +93,7 @@ router.post('/', upload.single('book'), async (req, res) => {
       title: title,
       filename: req.file.filename,
       placed: false,
+      userId: userId,
     });
 
     const savedBook = await newBook.save();
@@ -100,13 +114,16 @@ router.post('/', upload.single('book'), async (req, res) => {
 
 /**
  * @route   PATCH /api/books/:id/place
- * @desc    Toggle the 'placed' status of a book (shelf <-> altar)
+ * @desc    Toggle the 'placed' status of a book on user's shelf
  */
 router.patch('/:id/place', async (req, res) => {
   try {
-    const book = await Book.findById(req.params.id);
+    const userId = req.headers['x-user-id'] || req.query.userId;
+    const query = userId ? { _id: req.params.id, userId } : { _id: req.params.id };
+
+    const book = await Book.findOne(query);
     if (!book) {
-      return res.status(404).json({ error: 'Book not found' });
+      return res.status(404).json({ error: 'Book not found on your shelf' });
     }
 
     // Toggle placed status
@@ -126,9 +143,12 @@ router.patch('/:id/place', async (req, res) => {
  */
 router.delete('/:id', async (req, res) => {
   try {
-    const book = await Book.findById(req.params.id);
+    const userId = req.headers['x-user-id'] || req.query.userId;
+    const query = userId ? { _id: req.params.id, userId } : { _id: req.params.id };
+
+    const book = await Book.findOne(query);
     if (!book) {
-      return res.status(404).json({ error: 'Book not found' });
+      return res.status(404).json({ error: 'Book not found on your shelf' });
     }
 
     // Path to the physical file
@@ -153,12 +173,15 @@ router.delete('/:id', async (req, res) => {
 
 /**
  * @route   PATCH /api/books/return-all
- * @desc    Pooja Eduppu: return all placed books from the altar back to the shelf
+ * @desc    Pooja Eduppu: return all placed books from this user's altar back to their shelf
  */
 router.patch('/return-all', async (req, res) => {
   try {
-    await Book.updateMany({ placed: true }, { placed: false });
-    const books = await Book.find().sort({ createdAt: -1 });
+    const userId = req.headers['x-user-id'] || req.query.userId;
+    const query = userId ? { placed: true, userId } : { placed: true };
+
+    await Book.updateMany(query, { placed: false });
+    const books = await Book.find(userId ? { userId } : {}).sort({ createdAt: -1 });
     res.json(books);
   } catch (error) {
     console.error('Error returning all books:', error);

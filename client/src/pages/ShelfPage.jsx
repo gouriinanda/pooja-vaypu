@@ -2,7 +2,7 @@
 // Bookshelf view: upload PDF books, view colored spines, open PDFs, toggle altar placement, and delete
 
 import React, { useState, useEffect } from 'react';
-import { getBooks, uploadBook, togglePlaceBook, deleteBook, getPdfUrl } from '../api';
+import { getBooks, uploadBook, togglePlaceBook, deleteBook, getPdfUrl, getUserId, setUserId } from '../api';
 import { POOJA_VAYPU_DATE, POOJA_EDUPPU_DATE } from '../config';
 
 // Predefined traditional spine color classes to rotate through
@@ -147,6 +147,21 @@ export default function ShelfPage() {
     window.open(getPdfUrl(filename), '_blank', 'noopener,noreferrer');
   };
 
+  // Allow devotee to view or enter a Shelf ID to sync between mobile and desktop
+  const handleSyncShelf = () => {
+    const currentId = getUserId();
+    const enteredId = window.prompt(
+      `Your Private Shelf ID is:\n\n${currentId}\n\nTo view this shelf on your phone, paste this ID on your phone.\nOr enter an existing Shelf ID to load it:`,
+      currentId
+    );
+    if (enteredId && enteredId.trim() && enteredId.trim() !== currentId) {
+      setUserId(enteredId.trim());
+      loadBooks();
+      setSuccessMessage('Switched to private shelf: ' + enteredId.trim());
+      setTimeout(() => setSuccessMessage(''), 3000);
+    }
+  };
+
   // Check whether the festival is currently in the sacred resting period
   // (Between POOJA_VAYPU_DATE and POOJA_EDUPPU_DATE)
   const isLockedPeriod = (() => {
@@ -239,6 +254,21 @@ export default function ShelfPage() {
                 • On Altar: <strong>{placedCount}</strong> 🪔
               </span>
             )}
+          </div>
+
+          {/* Personal Shelf Indicator & Sync */}
+          <div className="personal-shelf-box">
+            <span className="personal-shelf-tag" title="Only you can see books on your personal shelf">
+              🔒 My Private Shelf
+            </span>
+            <button
+              type="button"
+              className="btn-sync-shelf"
+              onClick={handleSyncShelf}
+              title="Copy your shelf ID or load your shelf on another phone/laptop"
+            >
+              ⇄ Sync / Share ID
+            </button>
           </div>
         </div>
 

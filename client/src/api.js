@@ -5,6 +5,28 @@
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/+$/, '');
 
 /**
+ * Retrieve or generate a unique private devotee ID for this browser.
+ * This guarantees that only the current user sees their own uploaded books.
+ */
+export const getUserId = () => {
+  let id = localStorage.getItem('pooja_vaypu_user_id');
+  if (!id) {
+    id = 'devotee_' + Math.random().toString(36).substring(2, 8) + Date.now().toString(36).substring(4);
+    localStorage.setItem('pooja_vaypu_user_id', id);
+  }
+  return id;
+};
+
+/**
+ * Switch or sync the shelf ID (e.g. to open the same shelf on a phone)
+ */
+export const setUserId = (newId) => {
+  if (newId && newId.trim()) {
+    localStorage.setItem('pooja_vaypu_user_id', newId.trim());
+  }
+};
+
+/**
  * Get the full URL to view an uploaded PDF
  */
 export const getPdfUrl = (filename) => {
@@ -12,10 +34,14 @@ export const getPdfUrl = (filename) => {
 };
 
 /**
- * Fetch all books from the backend
+ * Fetch books belonging only to the current user
  */
 export const getBooks = async () => {
-  const response = await fetch(`${API_BASE}/api/books`);
+  const response = await fetch(`${API_BASE}/api/books`, {
+    headers: {
+      'x-user-id': getUserId(),
+    },
+  });
   if (!response.ok) {
     throw new Error('Failed to fetch books');
   }
@@ -23,7 +49,7 @@ export const getBooks = async () => {
 };
 
 /**
- * Upload a new PDF book
+ * Upload a new PDF book to the current user's personal shelf
  * @param {File} file - PDF file object
  * @param {string} title - Optional title (defaults to filename on server if empty)
  */
@@ -38,6 +64,9 @@ export const uploadBook = async (file, title) => {
   try {
     response = await fetch(`${API_BASE}/api/books`, {
       method: 'POST',
+      headers: {
+        'x-user-id': getUserId(),
+      },
       body: formData,
     });
   } catch (netErr) {
@@ -61,6 +90,9 @@ export const uploadBook = async (file, title) => {
 export const togglePlaceBook = async (id) => {
   const response = await fetch(`${API_BASE}/api/books/${id}/place`, {
     method: 'PATCH',
+    headers: {
+      'x-user-id': getUserId(),
+    },
   });
 
   if (!response.ok) {
@@ -77,6 +109,9 @@ export const togglePlaceBook = async (id) => {
 export const deleteBook = async (id) => {
   const response = await fetch(`${API_BASE}/api/books/${id}`, {
     method: 'DELETE',
+    headers: {
+      'x-user-id': getUserId(),
+    },
   });
 
   if (!response.ok) {
@@ -87,11 +122,14 @@ export const deleteBook = async (id) => {
 };
 
 /**
- * Return all placed books back to the shelf (Pooja Eduppu)
+ * Return all placed books back to the user's shelf (Pooja Eduppu)
  */
 export const returnAllBooks = async () => {
   const response = await fetch(`${API_BASE}/api/books/return-all`, {
     method: 'PATCH',
+    headers: {
+      'x-user-id': getUserId(),
+    },
   });
 
   if (!response.ok) {
@@ -100,4 +138,3 @@ export const returnAllBooks = async () => {
 
   return response.json();
 };
-
